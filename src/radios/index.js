@@ -12,9 +12,14 @@ export default class RadioContainer extends Container<State> {
     super(props);
 
     this.consumerOnChange = props.onChange;
+    this.name = props.name;
 
-    this.state = { name: props.name, value: props.value };
+    this.state = { value: props.value };
   }
+
+  getName = () => {
+    return this.name;
+  };
 
   onChange = event => {
     const { value } = event.target;
@@ -28,7 +33,7 @@ export default class RadioContainer extends Container<State> {
 // Group
 // ------------------------------
 
-type RadioGroupProps = { children: Node };
+type RadioGroupProps = { children: Node, onChange: (*) => void, name: string };
 export const RadioGroup = ({ children, ...props }: RadioGroupProps) => {
   const container = new RadioContainer(props);
   return <Provider inject={[container]}>{children}</Provider>;
@@ -37,7 +42,7 @@ export const RadioGroup = ({ children, ...props }: RadioGroupProps) => {
 // Radio
 // ------------------------------
 
-type RadioProps = { Component: any, innerRef?: ElementRef<*> };
+type RadioProps = { Component: any, innerRef?: ElementRef<*>, value: string };
 export class Radio extends Component<RadioProps> {
   static defaultProps = {
     Component: 'input',
@@ -47,9 +52,9 @@ export class Radio extends Component<RadioProps> {
 
     return (
       <Subscribe to={[RadioContainer]}>
-        {({ onChange, state }) => {
+        {({ getName, onChange, state }) => {
           const checked = state.value === props.value;
-          const name = props.name || state.name;
+          const name = props.name || getName();
 
           return (
             <Component
