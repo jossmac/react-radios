@@ -1,0 +1,10 @@
+{
+  "name": "react-radios",
+  "version": "1.0.0",
+  "description": "Proper handling of of HTML radios in react",
+  "main": "index.js",
+  "repository": "https://github.com/jossmac/react-radios.git",
+  "author": "Joss Mackison <joss.mackison@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
