@@ -58,13 +58,12 @@ export class Radio extends Component<RadioProps> {
       <Subscribe to={[RadioContainer]}>
         {({ getName, onChange, state }) => {
           const checked = state.value === props.value;
-          const name = props.name || getName();
 
           return (
             <Component
               {...props}
               checked={checked}
-              name={name}
+              name={getName()}
               onChange={onChange}
               ref={innerRef}
               type="radio"
