@@ -1,10 +1,19 @@
 {
-  "name": "react-radios",
-  "version": "1.0.0",
-  "description": "Proper handling of of HTML radios in react",
-  "main": "index.js",
-  "repository": "https://github.com/jossmac/react-radios.git",
-  "author": "Joss Mackison <joss.mackison@gmail.com>",
-  "license": "MIT",
-  "private": false
+  "name": "react-radios-TEMP",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.1.4"
+  },
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "unstated": "^2.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
 }
