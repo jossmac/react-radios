@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { RadioGroup, Radio } from './radios';
 
 const Container = props => (
@@ -15,32 +14,42 @@ const Container = props => (
 );
 const Label = props => <label style={{ padding: 8 }} {...props} />;
 
-export default class App extends Component {
-  state = { value: 'apple' };
+const groups = [
+  {
+    name: 'fruit',
+    items: ['apple', 'orange', 'watermelon'],
+  },
+  {
+    name: 'numbers',
+    items: [1, 2, 3],
+  },
+];
 
-  handleChange = value => {
-    this.setState({ value: value });
+export default class App extends Component {
+  state = { [groups[0].name]: groups[0].items[0] };
+
+  handleChange = name => value => {
+    const qualifiedValue = isNaN(value) ? value : parseInt(value);
+    this.setState({ [name]: qualifiedValue });
   };
 
   render() {
     return (
       <Container>
         <h1>React Radios</h1>
-        <RadioGroup
-          name="fruit"
-          value={this.state.value}
-          onChange={this.handleChange}
-        >
-          <Label>
-            <Radio value="apple" />Apple
-          </Label>
-          <Label>
-            <Radio value="orange" />Orange
-          </Label>
-          <Label>
-            <Radio value="watermelon" />Watermelon
-          </Label>
-        </RadioGroup>
+        {groups.map(g => (
+          <RadioGroup
+            name={g.name}
+            value={this.state[g.name]}
+            onChange={this.handleChange(g.name)}
+          >
+            {g.items.map(i => (
+              <Label>
+                <Radio value={i} /> {i}
+              </Label>
+            ))}
+          </RadioGroup>
+        ))}
       </Container>
     );
   }

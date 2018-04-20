@@ -2,10 +2,12 @@
 import React, { Component, type ElementRef } from 'react';
 import { Container, Provider, Subscribe } from 'unstated';
 
+type Value = string | number;
+
 // Container
 // ------------------------------
 
-type State = { value: string };
+type State = { value: Value };
 
 export default class RadioContainer extends Container<State> {
   constructor(props) {
@@ -34,6 +36,7 @@ export default class RadioContainer extends Container<State> {
 // ------------------------------
 
 type RadioGroupProps = { children: Node, onChange: (*) => void, name: string };
+
 export const RadioGroup = ({ children, ...props }: RadioGroupProps) => {
   const container = new RadioContainer(props);
   return <Provider inject={[container]}>{children}</Provider>;
@@ -42,7 +45,8 @@ export const RadioGroup = ({ children, ...props }: RadioGroupProps) => {
 // Radio
 // ------------------------------
 
-type RadioProps = { Component: any, innerRef?: ElementRef<*>, value: string };
+type RadioProps = { Component: any, innerRef?: ElementRef<*>, value: Value };
+
 export class Radio extends Component<RadioProps> {
   static defaultProps = {
     Component: 'input',
