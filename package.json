@@ -3,6 +3,10 @@
   "version": "1.0.1",
   "description": "Proper handling of HTML radios in react",
   "main": "dist/index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/jossmac/react-radios",
+  "bugs": { "url": "https://github.com/jossmac/react-radios/issues" },
+  "keywords": ["radio", "radio-group", "radios"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
